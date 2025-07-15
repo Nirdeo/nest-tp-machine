@@ -67,7 +67,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api-docs', app, document, {
+  SwaggerModule.setup('api', app, document, {
     swaggerOptions: {
       persistAuthorization: true, // Garde le token entre les rechargements
       tagsSorter: 'alpha',
@@ -80,6 +80,6 @@ async function bootstrap() {
   await app.listen(process.env.PORT ?? 3000);
   const port = process.env.PORT ?? 3000;
   console.log(`🚀 Serveur démarré sur http://localhost:${port}`);
-  console.log(`📚 Documentation Swagger disponible sur http://localhost:${port}/api-docs`);
+  console.log(`📚 Documentation Swagger disponible sur http://localhost:${port}/api`);
 }
 bootstrap();
