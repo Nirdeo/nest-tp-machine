@@ -25,11 +25,11 @@ interface User {
 
 @ApiTags('🔐 Authentication')
 @Controller('auth')
-@Public()
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('register')
+  @Public()
   @ApiOperation({ 
     summary: '📝 Inscription d\'un nouvel utilisateur',
     description: 'Créer un compte utilisateur. Un email de vérification sera envoyé avec un code à 6 chiffres.'
@@ -60,6 +60,7 @@ export class AuthController {
   }
 
   @Post('verify-email')
+  @Public()
   @ApiOperation({ 
     summary: '✅ Vérification d\'email après inscription',
     description: 'Valider l\'adresse email avec le code à 6 chiffres reçu par email.'
@@ -90,6 +91,7 @@ export class AuthController {
   }
 
   @Post('login')
+  @Public()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ 
     summary: '🚪 Connexion (étape 1/2 du 2FA)',
@@ -121,6 +123,7 @@ export class AuthController {
   }
 
   @Post('verify-login')
+  @Public()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ 
     summary: '🔑 Validation 2FA (étape 2/2)',
@@ -160,6 +163,7 @@ export class AuthController {
   }
 
   @Post('create-admin')
+  @Public()
   @ApiOperation({ 
     summary: '👨‍💼 Création du premier administrateur',
     description: 'Créer le premier compte administrateur du système. Disponible uniquement si aucun admin n\'existe.'
